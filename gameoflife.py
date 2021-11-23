@@ -146,7 +146,6 @@ def update_graphics(logic_board, graphics_board, window, generations_number):
     for i in range(generations_number):
         new_logic_board = copy.deepcopy(logic_board)
         update_array = []
-        print(update_array)
         for y in range(1, 31): # we are hard coding the second value because it is breaking when we give len(board) - 1 
             for x in range(1, 31): # 31 is the expected value
                 alive_neighbors = get_neighbor_states(logic_board, x, y)
@@ -169,7 +168,6 @@ def update_graphics(logic_board, graphics_board, window, generations_number):
             i.undraw()
             i.draw(window)
         logic_board = new_logic_board
-        print(update_array)
         sleep(0.1)
 
 
@@ -190,8 +188,9 @@ def generate_graphics_board(board, cell_size):
 def main():
     window_width = 900 # global variable 
     cell_size = 30 # global variable
-    generations_number = 10 # global variable 
-    mouse_input_times = 10
+    mouse_input_times = 10 # global variable 
+    generations_number = 100 # global variable 
+    
     window = GraphWin("Game of Life", window_width, window_width) # graphics window 
 
     testboard = txt_to_board("testboard.txt") # extract the board from txt file as a 2d array
