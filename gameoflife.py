@@ -190,15 +190,17 @@ def generate_graphics_board(board, cell_size):
 def main():
     window_width = 900 # global variable 
     cell_size = 30 # global variable
+    generations_number = 10 # global variable 
+    mouse_input_times = 10
     window = GraphWin("Game of Life", window_width, window_width) # graphics window 
+
     testboard = txt_to_board("testboard.txt") # extract the board from txt file as a 2d array
     standardized_board = standardize_board(testboard, window_width, cell_size)
     draw_board(standardized_board, window_width, cell_size, window) # draw the board on graphics window
-
-    game_board = input(standardized_board, window_width, cell_size, window, 10) # draw new squares and update the board array
+    game_board = input(standardized_board, window_width, cell_size, window, mouse_input_times) # draw new squares and update the board array
     new_graphics_board = generate_graphics_board(game_board, cell_size)
-    startkey = window.getKey()
-    update_graphics(game_board, new_graphics_board, window, 10) # play the game 
+    startkey = window.getKey() # press any key to start the simulation
+    update_graphics(game_board, new_graphics_board, window, generations_number) # play the game 
     stopkey = window.getKey() # press any key to close the graphics window
     window.close()   
 
